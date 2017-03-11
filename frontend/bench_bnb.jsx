@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {postUser, postSession, deleteSession} from './util/session_api_util'
+import configureStore from './store/store';
+
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
-    ReactDOM.render(<h1>Welcome to BenchBnB</h1>, root);
+    const store = configureStore();
+    window.store = store
+    ReactDOM.render(<Root store={store}/>, root);
 });
-
-window.postUser = postUser;
-window.postSession = postSession;
-window.deleteSession = deleteSession;

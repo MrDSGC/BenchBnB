@@ -21,7 +21,3 @@ export const deleteSession = (user) => {
     data: { user }
   })
 }
-
-window.postUser = postUser;
-window.postSession = postSession;
-window.deleteSession = deleteSession;
