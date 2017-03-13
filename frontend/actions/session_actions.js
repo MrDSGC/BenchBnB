@@ -1,16 +1,20 @@
-import React from 'react';
 import * as Util from '../util/session_api_util';
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
-export const recieveCurrentUser = (currentUser) => (
-  type: RECEIVE_CURRENT_USER,
-  currentUser
-);
+export const recieveCurrentUser = (currentUser) => {
+  return{
+    type: RECEIVE_CURRENT_USER,
+    currentUser
 
-export const receiveErrors = (errors) => (
+  }
+};
+
+export const receiveErrors = (errors) => ({
   type: RECEIVE_ERRORS,
   errors
-);
+});
+
 
 export const login = (formUser) => (dispatch) => {
   return Util.postSession(formUser)
@@ -21,7 +25,6 @@ export const login = (formUser) => (dispatch) => {
 export const logout = () => (dispatch) => {
   return Util.deleteSession()
     .then( response => dispatch(recieveCurrentUser(null)) )
-    .fail( response => dispatch(receiveErrors(response)) );
 };
 
 export const signup = (formUser) => (dispatch )=> {
